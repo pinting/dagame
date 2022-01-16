@@ -33,6 +33,7 @@ export class FadeContainer extends TickContainer {
 
                 if (this.fadeCallback) {
                     this.fadeCallback();
+                    this.fadeCallback = undefined;
                 }
             }
         }
@@ -47,6 +48,7 @@ export class FadeContainer extends TickContainer {
 
                 if (this.fadeCallback) {
                     this.fadeCallback();
+                    this.fadeCallback = undefined;
                 }
             }
         }

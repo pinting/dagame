@@ -23,12 +23,12 @@ export class FadeContainer extends TickContainer {
 
     protected process(delta: number, time: number): void {
         if (this.fade == "in") {
-            if (this.alpha < 1.0) {
+            if (this.alpha < 1) {
                 this.alpha += delta;
             }
 
-            if (this.alpha >= 1.0) {
-                this.alpha = 1.0;
+            if (this.alpha >= 1) {
+                this.alpha = 1;
                 this.fade = undefined;
 
                 if (this.fadeCallback) {
@@ -37,12 +37,12 @@ export class FadeContainer extends TickContainer {
             }
         }
         else if (this.fade == "out") {
-            if (this.alpha > 0.0) {
+            if (this.alpha > 0) {
                 this.alpha -= delta;
             }
 
-            if (this.alpha <= 0.0) {
-                this.alpha = 0.0;
+            if (this.alpha <= 0) {
+                this.alpha = 0;
                 this.fade = undefined;
 
                 if (this.fadeCallback) {

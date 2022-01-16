@@ -3,6 +3,7 @@ import { MenuScene } from "./MenuScene";
 import { randomInt } from "./Utils";
 import { FadeContainer } from "./FadeContainer";
 import { Application, Container } from "pixi.js";
+import { SplashScene } from "./SpashScene";
 
 export class Controller extends Container {
     private app: Application;
@@ -15,7 +16,7 @@ export class Controller extends Container {
 
         this.app = app;
 
-        this.createMenuScene();
+        this.createSplashScene();
     }
 
     private menuHandler(item: string) {
@@ -116,5 +117,18 @@ export class Controller extends Container {
         this.gameScene.init();
         this.addChild(this.gameScene);
         this.gameScene.fadeIn();
+    }
+
+    private createSplashScene() {
+        const scene = new SplashScene(this.app);
+
+        this.addChild(scene);
+
+        setTimeout(() => {
+            scene.fadeOut(() => {
+                scene.destroy();
+                this.createMenuScene();
+            });
+        }, 2000);
     }
 }
